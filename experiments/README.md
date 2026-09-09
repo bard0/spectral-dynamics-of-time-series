@@ -53,8 +53,9 @@ The migration follows scientific importance rather than chronology.
 |---|---|---|
 | E14a | matched-conditioning geometry falsification | migrated |
 | E14a-R | boundary-specific mechanism audit with corrected screen | migrated |
-| E13 / E13a | data-only admissibility prediction limits | **next** |
-| E12 | conditioning scaling calibration limits | next |
+| E13 | independent-realization admissibility prediction | migrated |
+| E13a | latent condition-level risk reanalysis | migrated |
+| E12 | conditioning scaling calibration limits | **next** |
 | E11 | non-normal perturbation mechanism | next |
 | E10 | transport failure of regular-regime calibration | next |
 
@@ -86,4 +87,4 @@ A historical result may be scientifically discussed without being presented as r
 
 ## Next migration target
 
-The next packages are E13 and E13a. Together they document the distinction between predicting a **single independent admissibility realization** and estimating a **latent condition-level risk**, including the design-limited negative E13 result and the later exploratory reanalysis.
+The next package is E12. It tests whether a simple conditioning-normalized perturbation scale can provide a transportable calibrated risk law, and it contains an important audit correction: the quantity originally labelled as a Schur separation was actually the raw eigenvalue gap.
