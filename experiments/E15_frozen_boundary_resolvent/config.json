@@ -1,0 +1,49 @@
+{
+  "experiment": "E15_frozen_boundary_resolvent",
+  "spectrum": [0.70, 0.60, 0.50, 0.40],
+  "r": 2,
+  "z_b": 0.55,
+  "param_values": [-2.0, -1.0, 0.0, 1.0, 2.0],
+  "panel_A_ladder": [
+    {"level": "A0", "nuisance_ratio_max": 1.10, "resolvent_ratio_min": 1.75},
+    {"level": "A1", "nuisance_ratio_max": 1.15, "resolvent_ratio_min": 1.60},
+    {"level": "A2", "nuisance_ratio_max": 1.20, "resolvent_ratio_min": 1.50}
+  ],
+  "panel_B_ladder": [
+    {"level": "B0", "resolvent_ratio_max": 1.05, "nuisance_ratio_min": 1.75},
+    {"level": "B1", "resolvent_ratio_max": 1.08, "nuisance_ratio_min": 1.60},
+    {"level": "B2", "resolvent_ratio_max": 1.10, "nuisance_ratio_min": 1.50}
+  ],
+  "n_panel_A_pairs": 8,
+  "n_panel_B_pairs": 8,
+  "epsilon_values": [0.005, 0.01, 0.02, 0.04, 0.08, 0.12, 0.16],
+  "n_directions": 5000,
+  "master_seed": 15031501,
+  "n_bootstrap": 10000,
+  "bootstrap_seed": 15031502,
+  "real_tol": 1e-8,
+  "pair_tol": 1e-7,
+  "panel_A_gate": {
+    "support_delta_min": 0.08,
+    "support_ci_low_gt": 0.03,
+    "reverse_delta_max": -0.08,
+    "reverse_ci_high_lt": -0.03,
+    "min_evaluable": 6,
+    "pass_fraction": 0.75,
+    "fail_fraction": 0.50
+  },
+  "panel_B_gate": {
+    "equiv_abs_delta_max": 0.05,
+    "equiv_ci": [-0.08, 0.08],
+    "nonequiv_abs_delta_min": 0.10,
+    "nonequiv_exclusion": [-0.05, 0.05],
+    "min_evaluable": 6,
+    "pass_fraction": 0.75,
+    "fail_fraction": 0.50
+  },
+  "archived_source": {
+    "file": "E15_COLAB_PROGRAM.py",
+    "sha256": "d37783041d1442499a8c4152f91af5c6835179b9dc4db22e5ff8a4feae870ce4"
+  },
+  "archived_perturbation_bank_sha256": "31e068e137db6ac1790c4338193605a028401efd309524b6d857afe1c056ced8"
+}
