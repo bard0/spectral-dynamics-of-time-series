@@ -15,7 +15,7 @@ Current evidence shows that reliability can remain predictable even when the sou
 
 ## Research trajectory
 
-The project has undergone several deliberate falsification-driven pivots:
+The project has undergone several falsification-driven pivots:
 
 1. **Adaptive history windows.** Study the statistical-error/nonstationarity trade-off and causal window selection.
 2. **Slow-subspace preservation.** Replace fragile mode-wise comparisons with invariant-subspace geometry.
@@ -35,6 +35,12 @@ E8 showed that cross-scale disagreement predicts slow-subspace estimation error 
 
 These are controlled-regime results, not universal uncertainty quantification claims.
 
+### Invariant clusters are more robust than individual modes
+
+E3 showed why mode-wise matching is fragile: a mode swap can leave the Grassmann distance essentially zero while individual-vector overlap changes strongly.
+
+E9 then demonstrated the operational consequence. Under inner-gap collapse, the `r=1` object became poorly defined while the `r=2` invariant cluster remained useful. E9b removed the main gap confound by fixing the true outer cluster gap and passed all frozen cluster-reliability gates.
+
 ### Non-normality changes the failure mode
 
 E10–E11 showed that non-normality can primarily reduce the probability that the intended real/conjugation-closed `r=2` spectral object exists at all. Conditional Grassmann error among surviving objects did not necessarily increase.
@@ -43,15 +49,17 @@ This shifted the target from survivor error alone to **spectral admissibility**.
 
 ### Global conditioning and one scalar resolvent are insufficient
 
-E14a constructed matched-conditioning counterexamples: relocating non-normal coupling across the retained/excluded spectral boundary changed pair-cut failure probability even with global conditioning, eigenvalues, gaps, and perturbation scale matched.
+E12 showed that a conditioning-normalized perturbation scale can rank admissibility risk but does not supply a universal calibrated law in the tested family.
 
-E15 then froze a boundary-resolvent scalar in a fresh four-dimensional family. After correcting a reporting-orientation error, the larger resolvent had the predicted risk direction when nuisance geometry was matched, but matched resolvent values still permitted large risk differences when other geometry changed.
+E14a then constructed matched-conditioning counterexamples: relocating non-normal coupling across the retained/excluded spectral boundary changed pair-cut failure probability even with global conditioning, eigenvalues, gaps, and perturbation scale matched.
+
+E15 froze a boundary-resolvent scalar in a fresh four-dimensional family. After correcting a reporting-orientation error, the larger resolvent had the predicted risk direction when nuisance geometry was matched, but matched resolvent values still permitted large risk differences when other geometry changed.
 
 > **E15 verdict: the single-point boundary-resolvent norm is refuted as a standalone transportable admissibility-risk variable.**
 
 ### Exact projected boundary law survives fresh falsification
 
-For the selected `2|3` spectral boundary, the project derived the projected discriminant
+For the selected `2|3` spectral boundary, the project derived
 
 \[
 [g+\varepsilon(E_{22}-E_{33})]^2+4\varepsilon^2E_{23}E_{32}.
@@ -66,7 +74,7 @@ In the fresh T6 operator family, theory versus simulation over 252 cells gave ap
 - maximum absolute error `0.0119`;
 - `98.8%` of cells inside exact 99% binomial intervals.
 
-> **T5 survives fresh operator-family falsification for the projected `2x2` boundary event.**
+> **T5 survives fresh operator-family falsification for the projected `2×2` boundary event.**
 
 ### Theorem-certified perturbative regime is useful, but not a global predictor
 
@@ -82,7 +90,7 @@ T12-A1 showed that a one-sample plug-in OLS sampling law can accurately calibrat
 
 Removing the oracle center caused substantial degradation. Increasing sample size alone did not reliably repair the point-centered risk estimator. A fresh local-to-boundary test (A2c2) showed that the matrix estimator itself can converge while the point-centered spectral-risk functional remains nonconcentrated under an `O(N^{-1/2})` approach to the pair-cut boundary.
 
-A subsequent center-uncertainty risk interval achieved nominal-90% pooled coverage about `0.936` in a fresh controlled local matrix family (A3).
+A subsequent center-uncertainty risk interval achieved nominal-90% pooled coverage about `0.936` in a fresh controlled local matrix family (A3). A high-N Riesz-chart test then supported risk-interval transport across six fresh non-normal embeddings, while one separate chart-support gate remained marginally design-limited and is not reported as a pass.
 
 ### Source attribution can fail even when reliability prediction survives
 
@@ -100,7 +108,7 @@ The project therefore distinguishes **reliability prediction** from **source att
 
 Operator-level perturbation geometry, projected boundary laws, invariant-graph certificates, nonregular risk near spectral boundaries, and the theory-to-data bridge.
 
-See [`docs/branch_A_spectral_admissibility.md`](docs/branch_A_spectral_admissibility.md).
+See [`docs/branch_A_spectral_admissibility.md`](docs/branch_A_spectral_admissibility.md) and [`theory/README.md`](theory/README.md).
 
 ### Branch B — causal spectral reliability
 
@@ -113,6 +121,8 @@ The branches are kept separate: an operator-level mechanism is not automatically
 ## Repository map
 
 ```text
+README.md
+
 docs/
     current_state.md
     research_story.md
@@ -120,26 +130,66 @@ docs/
     branch_A_spectral_admissibility.md
     branch_B_causal_reliability.md
     methodology_and_audits.md
+    novelty_positioning.md
     roadmap.md
+
 experiments/
     README.md
+    E1_local_edmd_bias_variance/
+    E2_causal_lepski_selector/
+    E3_grassmann_mode_swap_sanity/
+    E4_adaptive_spectral_window_benchmark/
+    E5_smooth_drift_benchmark/
+    E6_noise_change_controls/
+    EXP007_broad_online_spectral_benchmark/
+    EXP008_nested_disagreement_vs_true_drift/
+    E7_null_calibrated_directional/
+    E8_cross_scale_reliability/
+    E9_cluster_reliability/
+    E9b_fixed_outer_gap/
+    E10_nonnormal_reliability/
+    E11_matched_nonnormal_perturbation/
+    E12_conditioning_scaling/
+    E13_causal_admissibility_guard/
+    E13a_latent_risk_reanalysis/
+    E14a_matched_conditioning_geometry/
+    E14aR_boundary_mechanism_audit/
     E15_frozen_boundary_resolvent/
     EXP009_gate1_identifiability/
+
+theory/
+    README.md
+    T4_T6_boundary_probability.md
+    T7_T11_certified_geometry.md
+    T12_theory_to_data.md
+    T12_provenance_status.md
 ```
 
-Additional experiment packages are being migrated from the research archive after provenance, claim, and reproducibility checks.
+Some early packages are historical scientific records because their original byte-level archive has not yet been located. They are explicitly labeled as such and are not presented as fully reproducible runs.
+
+Large simulation tables and checkpoints remain in the external project archive; GitHub stores compact source/configuration/provenance material where it can be transferred and verified safely.
+
+## Historical naming
+
+Two numbering conventions coexist in the research history:
+
+- early `EXP-007` is the broad online benchmark, while later `E7` is the directional diagnostic;
+- early `EXP-008` falsifies nested disagreement as a direct drift proxy, while later `E8` tests cross-scale disagreement as an estimation-error predictor.
+
+The labels are preserved instead of being silently renumbered.
 
 ## Research principles
 
-- Preserve negative and design-limited results.
+- Preserve negative, inconclusive, design-limited, and provenance-invalidated results.
 - Freeze confirmatory designs before target outcomes.
 - Use oracle information for evaluation only, unless a result is explicitly labeled oracle/mechanistic.
 - Label post-hoc analyses exploratory.
 - Keep implementation corrections visible when they change interpretation.
 - Check spectral-object support before reporting conditional survivor error.
+- Do not promote historical numerical evidence to claim-ready status when executable provenance is missing.
 - State claims only at the level supported by the tested operator family and data-generating process.
 - Prefer a reliable negative result to a post-hoc rescued positive claim.
 
 ## Current priority
 
-The next high-value step is a **provenance-clean stationary correlated-trajectory theory-to-data test that carries spectral-center uncertainty**, followed by calibrated causal reliability tests. Adaptive history selection remains downstream until that layer is established.
+The next high-value step is a **provenance-clean stationary correlated-trajectory theory-to-data reconstruction that carries spectral-center uncertainty**, followed by calibrated causal reliability tests. Adaptive history selection remains downstream until that layer is established.
