@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local / OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Large experiment archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Binary numerical checkpoints
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+
+# Large generated data by default
+checkpoints/
+raw/
+raw_data/
+artifacts/
+
+# Keep compact curated CSVs in Git, but ignore common raw/checkpoint patterns
+**/checkpoints/**
+**/*raw_rows*.csv
+**/*mechanism_rows*.csv
+**/*trajectory_rows*.csv
+**/*direction_rows*.csv
+
+# Generated figures can be selectively force-added when scientifically useful
+**/plots/*.png
+**/plots/*.pdf
+
+# Temporary files
+*.tmp
+*.partial
+*~
