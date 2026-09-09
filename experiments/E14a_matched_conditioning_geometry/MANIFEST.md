@@ -2,30 +2,34 @@
 
 This file records the archival provenance used for the public repository migration.
 
-## Drive source
+## External archive
 
-- experiment folder ID: `1NY7vbDjEzCWbOQS_ttcZ3aidYadFYpUz`
-- scientific report ID: `1SMuSVPQ0pToPu2Aw4FBsjW_GEHdIUo4L`
-- original artifact manifest ID: `10-wklYcmiuu13jNDAfdKgdMRnGtkooMM`
-- frozen configuration ID: `1H4FnE03ZmFk7UlS4rtbJhMUeVgGMrBPT`
-- source ID: `14Bi_eOyrYJR2wve6L_d2X46RziuvFr7d`
+Large raw artifacts remain in the project archive on Google Drive:
+
+- experiment folder: https://drive.google.com/drive/folders/1NY7vbDjEzCWbOQS_ttcZ3aidYadFYpUz
+- scientific report: https://drive.google.com/file/d/1SMuSVPQ0pToPu2Aw4FBsjW_GEHdIUo4L/view
+- original artifact manifest: https://drive.google.com/file/d/10-wklYcmiuu13jNDAfdKgdMRnGtkooMM/view
+- frozen configuration: https://drive.google.com/file/d/1H4FnE03ZmFk7UlS4rtbJhMUeVgGMrBPT/view
+- original executable source: https://drive.google.com/file/d/14Bi_eOyrYJR2wve6L_d2X46RziuvFr7d/view
+
+Access to these links depends on the permissions of the corresponding Drive items. The links are retained even when the underlying archive is not publicly shared, because Drive remains the byte-level source of truth for the original run.
 
 ## Core checksums
 
-- `src/E14a_experiment.py` SHA256: `ec2fdbeb7e84aa2cfea01e3a2210d17b1832c4b421ed7eac4cc8230c141462a5`
-- `config/config.json` SHA256: `72fb9bf56f1242408db7c8fcbf13846d642bb8cf645c14315de5c64a462d61a3`
+- original executable source SHA256: `ec2fdbeb7e84aa2cfea01e3a2210d17b1832c4b421ed7eac4cc8230c141462a5`
+- frozen `config.json` SHA256: `72fb9bf56f1242408db7c8fcbf13846d642bb8cf645c14315de5c64a462d61a3`
 
-The source and configuration copied into this repository were checked against these hashes before migration.
+The frozen configuration copied into this repository was checked against the archived file before migration. The original executable source is linked above and may also be mirrored into `src/` because it is small enough for the source repository.
 
 ## Archived perturbation bank
 
-The original Drive package contains a persisted `perturbation_directions.npy` bank and its SHA256 record. The binary bank is not duplicated in this source repository because it is deterministically generated from the frozen master seed and because the raw archive remains the byte-level source of truth.
+The original Drive package contains a persisted `perturbation_directions.npy` bank and its SHA256 record. The binary bank is not duplicated in this repository because it is deterministically generated from the frozen master seed and because the raw archive remains the byte-level source of truth.
 
 Frozen master seed: `14031401`.
 
 ## Large archived outputs
 
-The original package contains per-cell raw checkpoints of several megabytes each, paired-bootstrap checkpoints, CSV summaries, figures, reports, and the full artifact manifest. These are not blindly duplicated here. The repository preserves the executable source, frozen configuration, scientific result, and the hashes/identifiers needed to audit the archived run.
+The original package contains per-cell raw checkpoints of several megabytes each, paired-bootstrap checkpoints, CSV summaries, figures, reports, and the full artifact manifest. These are not blindly duplicated here. The GitHub package preserves the scientific result, frozen design, concise reproducibility metadata, checksums, and direct archive links.
 
 ## Scientific integrity note
 
