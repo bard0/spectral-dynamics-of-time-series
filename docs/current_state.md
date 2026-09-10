@@ -200,6 +200,14 @@ Across 4,000 fresh intervals:
 
 **T12-A3 risk interval supported** in the controlled local matrix family.
 
+## Riesz-chart transport: scientific result retained, source provenance limited
+
+The structured theory log records a high-N A4b test across six fresh non-normal embeddings. One of 90 cells marginally missed the frozen chart-support requirement (`0.99455` versus `0.995`), so the chart/event gate is formally design-limited. The independent risk-interval gate had pooled coverage about `0.902` with geometry-level coverage roughly `0.894–0.913`.
+
+A later recovery audit could not fully authenticate the original executable source/configuration and exact source-dependent event/support implementations for the A4b/B1 extension sequence.
+
+Therefore A4b is retained as **theory-log / provenance-limited evidence**, not as a source-reproducible run. T12-B1 is more severe and is **provenance-invalidated / not claim-ready**. The next valid stationary correlated-trajectory replication must use the new identifier `T12-B1R` and freeze complete executable provenance before outcomes.
+
 ---
 
 # Strong negative / limiting results
@@ -266,6 +274,8 @@ Current focus:
 - calibrated risk intervals;
 - provenance-clean transport from iid transitions to one correlated trajectory.
 
+The next trajectory experiment is `T12-B1R`, a reconstructed/re-frozen stationary correlated-trajectory Riesz risk-interval test.
+
 See `branch_A_spectral_admissibility.md`.
 
 ## Branch B — causal reliability
@@ -306,6 +316,8 @@ The project does **not** currently claim:
 - a new generic adaptive-window algorithm;
 - general identifiability of estimation noise versus dynamical drift;
 - novelty of classical Riccati/Sylvester, resolvent, pseudospectral, or nonregular-inference theory;
-- nonlinear or general nonstationary validity of the controlled linear results.
+- nonlinear or general nonstationary validity of the controlled linear results;
+- source-level reproducibility for provenance-limited T12-A4b;
+- claim-ready correlated-trajectory evidence from provenance-invalidated T12-B1.
 
-The strongest current niche is **causal/data-driven reliability and admissibility of selected slow spectral objects, together with explicit mechanisms and identifiability limits**.
+The strongest current niche is **causal/data-driven reliability and admissibility of selected slow spectral objects, together with explicit mechanisms, provenance ceilings, and identifiability limits**.
