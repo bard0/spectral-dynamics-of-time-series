@@ -301,9 +301,17 @@ All 90 cells were active.
   `[0.9006,0.9067,0.9011,0.9133,0.8944,0.8972]`;
 - at N=65536 all `6/6` geometries had pooled-over-c coverage above `0.80`.
 
-**Verdict: A4b RIESZ RISK-INTERVAL TRANSPORT SUPPORTED ACROSS FRESH NONNORMAL EMBEDDINGS.**
+**Recorded scientific verdict: A4b RIESZ RISK-INTERVAL TRANSPORT SUPPORTED ACROSS FRESH NONNORMAL EMBEDDINGS.**
 
 Do not promote Gate A to PASS: one frozen support cell missed the threshold by `0.00045`.
+
+### Provenance ceiling
+
+A later independent recovery audit could not fully authenticate the original executable source/configuration and all exact source-dependent event/support implementations for the A4b/B1 extension sequence.
+
+Therefore the A4b numerical interpretation is retained as **THEORY-LOG / PROVENANCE-LIMITED EVIDENCE**. It must not be presented as source-reproducible from the recovered archive. This provenance limitation does not by itself convert the recorded numerical result into a scientific refutation.
+
+See `T12_provenance_status.md` for the exact distinction between A4b and the more severe T12-B1 provenance failure.
 
 ---
 
@@ -328,6 +336,6 @@ The T12 sequence changes the interpretation of "spectral uncertainty" substantia
 - estimating the **sampling covariance** can be easy;
 - estimating a **single point spectral-risk probability** can still be nonregular near the admissibility boundary;
 - explicitly representing uncertainty in the spectral center can produce calibrated **risk intervals**;
-- a coordinate-free Riesz boundary chart transports this picture across tested non-normal embeddings when the isolated cluster remains supported.
+- a coordinate-free Riesz boundary chart transports this picture across the tested non-normal embeddings in the structured numerical record when the isolated cluster remains supported, but the A4b executable provenance ceiling must remain explicit.
 
 The remaining challenge is to extend this carefully beyond isolated linear pair-cut strata without losing provenance, identifiability, or claim discipline.
