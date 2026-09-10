@@ -1,51 +1,57 @@
-# T12 trajectory-extension provenance status
+# T12 provenance status
 
 ## Why this file exists
 
-The theory log contains a historical correlated-trajectory experiment labeled `T12-B1` with a detailed frozen design and a numerical result. A later independent recovery audit found that the original executable provenance was incomplete.
+The T12 theory-to-data sequence contains results with different levels of executable provenance. The repository therefore separates **scientific-history evidence**, **source-reproducible evidence**, and **provenance-invalidated numerical history**.
 
-The repository therefore separates **historical narrative evidence** from **claim-ready reproducible evidence**.
+## T12-A4b — high-N Riesz-chart transport
 
-## Historical T12-B1 design
+The structured theory log records a high-N extension in which the Riesz-chart risk interval transported across six fresh non-normal embeddings. The scientific summary retained in the project memory is:
 
-The intended experiment extended the local Riesz risk interval from iid transition-pair sampling to a stationary correlated linear VAR trajectory.
+- one of 90 chart-support cells marginally missed the frozen support requirement (`0.99455` versus `0.995`), so the event-support gate is formally design-limited;
+- conditional/event-equivalence evidence was numerically very close (`MAE ≈ 7.5e-5`, maximum difference `≈0.00145`);
+- the independent nominal-90% risk-interval gate had pooled coverage about `0.902`, with geometry-level coverage approximately `0.894–0.913`.
 
-The frozen design used:
+The scientific interpretation is retained as **theory-log evidence supporting Riesz risk-interval transport in the tested high-N controlled family, with the separate chart-support gate marginally design-limited**.
+
+### Provenance limitation
+
+A later independent recovery audit could not fully recover and authenticate the original executable source/configuration used for the A4b/B1 trajectory-extension sequence, including all exact event/support implementations needed for a byte-faithful rerun.
+
+Therefore A4b must **not** be labeled `SOURCE MIGRATED` or `SOURCE VERIFIED` solely from its numerical summary. Its current repository status is:
+
+**THEORY-LOG / PROVENANCE-LIMITED EVIDENCE — scientific interpretation retained, source-level reproduction not established from the recovered archive.**
+
+This is a reproducibility limitation, not an automatic reclassification of the recorded numerical verdict as a scientific refutation.
+
+## T12-B1 — historical correlated-trajectory extension
+
+The intended experiment extended the local Riesz risk interval from iid transition-pair sampling to one stationary correlated linear VAR trajectory.
+
+The historical log reports a frozen design using:
 
 - two fresh non-normal embeddings;
 - local `c={-1,-0.5,0,0.5,1}`;
 - trajectory lengths `T={4096,8192}`;
 - stationary Gaussian initialization;
-- OLS on all causal transition pairs;
-- 1200 oracle trajectories per cell;
-- 200 pilot trajectories per cell;
+- OLS on causal transition pairs;
+- oracle and pilot trajectory banks;
 - the same Riesz boundary functional and nominal-90% center-uncertainty risk interval used in the iid theory branch.
 
-The historical log reports:
+The historical numerical narrative reported encouraging coverage. However, the later recovery audit could not authenticate enough of the original executable provenance to reproduce the exact event definitions and failure logic independently.
 
-- fixed-contour Gate 1 design-limited at minimum support `0.9583` for T=4096;
-- descriptive event mismatch MAE `0.00675`, maximum `0.025`, all 20/20 cells within `0.03`;
-- risk-interval pooled coverage `0.91625`;
-- coverage by geometry `0.9330` and `0.8995`;
-- coverage by T `0.9090` at T=4096 and `0.9235` at T=8192.
+The following authentic run components were not sufficiently recoverable for claim-ready reproduction:
 
-If provenance had remained valid, the frozen narrative verdict would have been support for the stationary correlated-trajectory risk interval.
-
-## Provenance correction
-
-A subsequent independent recovery audit found that the following authentic run components could not be recovered from the archived executable provenance:
-
-- original `M(delta)` implementation;
-- exact FULL_FAIL implementation;
-- exact PHI_FAIL implementation;
-- Riesz-support implementation;
-- failure-category implementation;
-- original run configuration;
+- original transition-covariance implementation details;
+- exact full-failure event implementation;
+- exact Riesz-chart failure/support implementation;
+- failure-category logic;
+- complete original run configuration;
 - authenticated original executable source.
 
 Authentic-source-dependent unit tests therefore could not be independently rerun.
 
-## Claim status
+## B1 claim status
 
 The historical T12-B1 numerical result is consequently:
 
@@ -53,28 +59,30 @@ The historical T12-B1 numerical result is consequently:
 
 It must not be used as reproducible confirmatory evidence in a paper or repository summary.
 
-The detailed frozen specification remains useful as design documentation, but a narrative specification is not a substitute for executable provenance.
+The frozen narrative specification remains useful as design documentation, but a narrative specification is not a substitute for executable provenance.
 
 ## Required reconstruction rule
 
-The old identifier must not simply be rerun and presented as the same experiment.
+The old B1 identifier must not simply be rerun and presented as the same experiment.
 
-Any future correlated-trajectory replication must use a new identifier, for example:
+Any future correlated-trajectory replication must use a new identifier:
 
 `T12-B1R — reconstructed/re-frozen correlated-trajectory Riesz risk interval`
 
 and must freeze **before outcomes**:
 
-- full executable source;
+- complete executable source;
 - configuration;
-- exact event definitions;
+- exact event and support definitions;
 - seed namespaces;
+- chart/contour specification;
 - artifact manifest;
 - SHA256 checksums;
-- numerical integrity tests.
+- numerical integrity tests;
+- substantive implementation and claim audits.
 
 Only the reconstructed fresh result may become claim-ready.
 
-## Repository policy illustrated by B1
+## Repository policy illustrated by T12
 
-This project preserves provenance failures rather than deleting them. A scientifically plausible numerical result can still lose claim status when the execution path cannot be independently authenticated.
+A scientifically plausible or even numerically strong result is not promoted to source-reproducible status when the execution path cannot be independently authenticated. Numerical scientific history is preserved, but provenance ceilings remain explicit.
