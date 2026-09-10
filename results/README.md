@@ -13,6 +13,7 @@ The repository uses the following distinctions:
 - **INCONCLUSIVE** — evidence did not pass support or failure thresholds;
 - **DESIGN-LIMITED** — the experiment could not answer the intended question because a prerequisite/gate failed;
 - **EXPLORATORY** — useful post-hoc or screening evidence, not claim-ready confirmation;
+- **THEORY-LOG / PROVENANCE-LIMITED** — the structured scientific record retains the numerical/theoretical result, but source-level reproduction is not established from the recovered archive;
 - **PROVENANCE-INVALIDATED** — numerical history retained, but executable provenance is insufficient for a reproducible scientific claim.
 
 ## Main scientific chain
@@ -41,9 +42,11 @@ The repository uses the following distinctions:
 | T12-A2b | larger N alone does not repair point-centered spectral-risk estimation near the tested boundary | refuted |
 | T12-A2c2 | local point-risk nonregularity persists under `N^-1/2` boundary approach | supported in controlled matrix family |
 | T12-A3 | center-uncertainty spectral-risk intervals attain high nominal coverage | supported |
-| T12-A4b | Riesz risk-interval transport across fresh non-normal embeddings | supported; separate chart gate marginally design-limited |
-| T12-B1 | correlated-trajectory historical result | provenance-invalidated |
+| T12-A4b | high-N Riesz risk-interval transport is retained in the structured theory log; separate chart gate was marginally design-limited | theory-log / provenance-limited |
+| T12-B1 | correlated-trajectory historical numerical result | provenance-invalidated / not claim-ready |
 | EXP-009 | source attribution between estimation instability and smooth drift from tested causal observables | strong negative |
+
+For T12-A4b and T12-B1, see `theory/T12_provenance_status.md` before using the numerical summaries in a reproducibility or publication claim.
 
 ## Interpretation
 
