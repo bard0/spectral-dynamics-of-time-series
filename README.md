@@ -90,7 +90,9 @@ T12-A1 showed that a one-sample plug-in OLS sampling law can accurately calibrat
 
 Removing the oracle center caused substantial degradation. Increasing sample size alone did not reliably repair the point-centered risk estimator. A fresh local-to-boundary test (A2c2) showed that the matrix estimator itself can converge while the point-centered spectral-risk functional remains nonconcentrated under an `O(N^{-1/2})` approach to the pair-cut boundary.
 
-A subsequent center-uncertainty risk interval achieved nominal-90% pooled coverage about `0.936` in a fresh controlled local matrix family (A3). A high-N Riesz-chart test then supported risk-interval transport across six fresh non-normal embeddings, while one separate chart-support gate remained marginally design-limited and is not reported as a pass.
+A subsequent center-uncertainty risk interval achieved nominal-90% pooled coverage about `0.936` in a fresh controlled local matrix family. A high-N Riesz-chart test then produced strong theory-log evidence for risk-interval transport across six fresh non-normal embeddings, while one separate chart-support gate remained marginally design-limited.
+
+**Provenance note:** the A4b numerical interpretation is retained in the structured scientific record, but a later recovery audit could not fully authenticate the original executable/configuration. A4b is therefore **theory-log / provenance-limited evidence**, not a source-reproducible run in this repository. The later correlated-trajectory B1 numerical result is more severe: it is **provenance-invalidated / not claim-ready**. See `theory/T12_provenance_status.md`.
 
 ### Source attribution can fail even when reliability prediction survives
 
@@ -132,6 +134,8 @@ docs/
     methodology_and_audits.md
     novelty_positioning.md
     roadmap.md
+    reproducibility_status.md
+    artifact_migration_status.md
 
 experiments/
     README.md
@@ -180,7 +184,7 @@ The labels are preserved instead of being silently renumbered.
 
 ## Research principles
 
-- Preserve negative, inconclusive, design-limited, and provenance-invalidated results.
+- Preserve negative, inconclusive, design-limited, provenance-limited, and provenance-invalidated results.
 - Freeze confirmatory designs before target outcomes.
 - Use oracle information for evaluation only, unless a result is explicitly labeled oracle/mechanistic.
 - Label post-hoc analyses exploratory.
@@ -192,4 +196,6 @@ The labels are preserved instead of being silently renumbered.
 
 ## Current priority
 
-The next high-value step is a **provenance-clean stationary correlated-trajectory theory-to-data reconstruction that carries spectral-center uncertainty**, followed by calibrated causal reliability tests. Adaptive history selection remains downstream until that layer is established.
+The next high-value Branch-A experiment is **`T12-B1R` — a reconstructed, re-frozen stationary correlated-trajectory Riesz risk-interval test that explicitly carries spectral-center uncertainty**. It must preserve executable source, configuration, exact event/support definitions, seed namespaces, manifests, hashes, and integrity tests before outcomes.
+
+Adaptive history selection remains downstream until the stationary trajectory/data-reliability layer is established.
