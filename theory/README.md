@@ -47,8 +47,11 @@ T4–T12: boundary-local probability laws, certified regimes, and theory-to-data
 | T12-A2c2 | local nonregularity under `N^-1/2` approach to pair-cut boundary | supported |
 | T12-A3 | center-uncertainty risk interval | supported |
 | T12-A4 | coordinate-free Riesz-chart transport | design-limited due to chart support |
-| T12-A4b | high-N Riesz transport | Gate A marginally design-limited; risk-interval transport supported |
-| T12-B1 | correlated-trajectory extension | historical numerical result later provenance-invalidated |
+| T12-A4b | high-N Riesz transport | scientific/theory-log result retained; Gate A marginally design-limited; source provenance incomplete |
+| T12-B1 | correlated-trajectory extension | provenance-invalidated / not claim-ready |
+| T12-B1R | reconstructed correlated-trajectory replication | required future re-frozen experiment; not yet run |
+
+The A4b/B1 distinction is important: A4b retains its structured-theory-log scientific interpretation but is **not source-reproducible from the recovered archive**, whereas B1 loses claim-ready status entirely. See `T12_provenance_status.md`.
 
 ## Current theoretical picture
 
@@ -82,4 +85,4 @@ Potential project-specific content is narrower: the assembly of these establishe
 - `T4_T6_boundary_probability.md` — boundary modal sign law and exact projected-complexification probability.
 - `T7_T11_certified_geometry.md` — global failure of the second-order correction, certified perturbative recovery, pre-certificate and shared-radial joint geometry.
 - `T12_theory_to_data.md` — finite-data OLS bridge, local nonregularity, risk intervals and Riesz-chart transport.
-- `T12_provenance_status.md` — explicit record of the trajectory-extension provenance correction.
+- `T12_provenance_status.md` — explicit record of the A4b/B1 provenance correction and the required B1R reconstruction rule.
