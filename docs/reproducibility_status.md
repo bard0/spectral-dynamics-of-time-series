@@ -8,8 +8,9 @@ A result can be scientifically important while still lacking a fully migrated by
 
 - **SOURCE MIGRATED** — executable source is present in GitHub and linked to the archived result.
 - **SOURCE VERIFIED / HASH RECORDED** — source exists in the external archive and its SHA256 has been verified, but the exact source file is not yet stored in GitHub.
+- **THEORY-LOG / PROVENANCE-LIMITED** — a structured theory log records the design/result, but authentic source-level reproduction is not established from the recovered archive.
 - **HISTORICAL RECORD** — the authoritative project ledger supports the scientific result, but a complete executable archive has not yet been located.
-- **PROVENANCE-INVALIDATED** — a historical numerical result exists but its original execution provenance is insufficient for claim-ready reproduction.
+- **PROVENANCE-INVALIDATED** — a historical numerical result exists but its original execution provenance is insufficient for a claim-ready reproducible result.
 
 ## Experiment map
 
@@ -36,9 +37,12 @@ A result can be scientifically important while still lacking a fully migrated by
 | E14a-R | audited historical mechanism package | original archive had source-capture/reporting defects; corrected scientific result documented |
 | E15 | source verified / hash recorded | archived program SHA `d37783041d1442499a8c4152f91af5c6835179b9dc4db22e5ff8a4feae870ce4` |
 | EXP-009 | migrated scientific package | frozen design/result documented |
-| T4–T11 | theory-log provenance | derivations and frozen numerical summaries migrated from the theory log |
-| T12-A1–A4b | theory-log provenance | staged theory-to-data results and gates documented |
-| T12-B1 | provenance-invalidated | historical numerical outcome retained, claim status removed |
+| T4-T11 | theory-log provenance | derivations and frozen numerical summaries migrated from the structured theory log |
+| T12-A1-A3 | theory-log provenance | iid/data-centered/local-boundary sequence documented; source-level status must be read stage by stage |
+| T12-A4 | theory-log provenance | design-limited Riesz-chart transport stage |
+| T12-A4b | theory-log / provenance-limited | high-N numerical interpretation retained, but authentic original executable/configuration provenance was not fully recoverable |
+| T12-B1 | provenance-invalidated | historical correlated-trajectory numerical outcome retained, claim status removed |
+| T12-B1R | not yet run | required future reconstructed/re-frozen correlated-trajectory replication |
 
 ## Byte-faithful source policy
 
@@ -72,4 +76,4 @@ A claim-ready future package should freeze and preserve before target outcomes:
 8. SHA256 checksums;
 9. substantive correctness/statistical/claim audits.
 
-The T12-B1 provenance failure is the reason this standard is explicit.
+The T12 provenance correction is the reason this standard is explicit. In particular, the next stationary correlated-trajectory test must use a new identifier (`T12-B1R`) rather than silently rerunning the provenance-invalidated B1 record.
