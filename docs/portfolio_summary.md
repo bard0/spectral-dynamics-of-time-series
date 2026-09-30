@@ -1,260 +1,108 @@
-# Portfolio Summary
+# Portfolio summary
 
-## Causal Spectral Reliability and Admissibility in Local Koopman/EDMD Models
+## Causal spectral reliability and admissibility in local Koopman/EDMD models
 
-**Status:** completed exploratory research case study, portfolio release — September 2026.
+I started this project with a fairly ordinary practical problem: a local model of a nonstationary time series needs a history length. Too little data gives a noisy operator estimate; too much data mixes dynamics from different times.
 
-## Research question
-
-Local Koopman/EDMD models of nonstationary time series require choosing how much past data to use and deciding whether the resulting slow spectral structure is trustworthy.
-
-The project began with a practical question:
-
-> How much historical data remains dynamically relevant at the current time?
-
-It then evolved into a more fundamental one:
-
-> Can the reliability and even the existence of a selected slow spectral object be assessed from finite data, especially near non-normal spectral boundaries?
-
-The final project therefore separates three tasks that initially looked similar:
-
-1. **reliability** — how inaccurate or fragile is the estimated slow spectral object?
-2. **admissibility** — does the intended spectral object remain well defined under finite perturbations?
-3. **source attribution** — can observed spectral motion be identified as estimation noise rather than genuine dynamical change?
-
-The experiments show that the first two can be tractable in controlled regimes even when the third is not identifiable from the tested causal diagnostics.
-
----
-
-## Research trajectory
-
-### 1. Local estimation under nonstationarity
-
-For a local EDMD estimator based on a history window of length \(n\), the initial analysis produced the leading upper-bound structure
+The first calculation made that trade-off explicit. In a regular regime, the leading error bound has the form
 
 \[
-U(n,t) \approx \frac{A}{n} + C L_t^2 n^2.
+U(n,t)\approx \frac{A}{n}+CL_t^2n^2,
 \]
 
-The first term is statistical and decreases with the amount of data. The second accumulates bias from a time-varying operator.
-
-The minimizer of this upper bound scales as
+which gives
 
 \[
-n^*_{UB}(t) = O(L_t^{-2/3}).
+n^*_{UB}(t)=O(L_t^{-2/3})
 \]
 
-Controlled numerical tests recovered the expected \(n^{-1}\) and \(n^2\) scalings and an empirical exponent near \(-0.6675\).
+for the minimizer of the bound. Numerical tests recovered both component scalings and an empirical exponent close to \(-2/3\).
 
-This result established the bias–nonstationarity trade-off, but not a causal estimator of the unknown local drift rate.
+That result did not solve the main practical problem, because the local drift rate is not known online. I therefore tried a Lepski-style causal selector based on nested estimates and finite-sample radii. The bounds behaved correctly, but the selector was too conservative: many windows looked compatible and it often kept the longest history.
 
-### 2. A mathematically valid selector was practically too conservative
+That failure changed the direction of the project.
 
-A Lepski-style nested-window selector was implemented using finite-sample confidence radii.
+Instead of asking for a generic "best window", I switched to the slow spectral structure itself. For metastable or multiscale systems, this is often more relevant than the full operator matrix. I also stopped comparing individual eigenvectors whenever an invariant subspace was the natural object. A mode-swap sanity test made the reason concrete: the relevant Grassmann distance stayed essentially zero while individual-vector overlap changed strongly.
 
-In the tested regime it often declared many windows mutually compatible and selected the largest history. This exposed a useful gap:
-
-> a correct finite-sample upper bound need not be sharp enough to drive an informative online decision rule.
-
-The negative result was retained rather than tuned away.
-
-### 3. Invariant subspaces replaced individual eigenvectors
-
-The project then moved from raw operator error and individual modes to slow invariant subspaces.
-
-A mode-swap sanity test showed Grassmann distance on the order of \(10^{-14}\) while individual-vector overlap could fall to about \(0.13\). This motivated the use of invariant clusters/subspaces throughout the later work.
-
-### 4. Adaptive-window superiority was not established
-
-Broad causal benchmarks compared fixed histories, prediction-based rules, forgetting, Lepski-like selectors, gap-based criteria, Grassmann criteria, and related baselines.
-
-No adaptive rule showed robust general superiority across all tested systems.
-
-This falsified the broad project framing as a new generic adaptive-window method.
-
-### 5. Cross-scale disagreement became a reliability signal, not a drift estimator
-
-The nested quantity
+The next hypothesis was that disagreement between nested slow subspaces,
 
 \[
-S_{scale}(H,t)=d_G(E_H(t),E_{2H}(t))
+d_G(E_H,E_{2H}),
 \]
 
-was tested against known true dynamical drift.
+might measure how much the true dynamics had changed. Controlled experiments did not support that interpretation. The quantity mixed several effects and correlated poorly with known true drift.
 
-It was not a reliable direct drift proxy.
+It was still useful, just for a different task.
 
-However, in stationary regular-gap families it did contain information about actual slow-subspace estimation error. In E8, Spearman correlation was about \(0.51\) and AUROC about \(0.79\). In the fixed-outer-gap cluster experiment E9b, the hardest primary condition reached AUROC about \(0.83\) with support near one.
+In stationary regular-gap experiments, cross-scale disagreement carried information about actual slow-subspace estimation error. E8 gave Spearman correlation around 0.51 and AUROC around 0.79. E9b moved to a two-dimensional invariant cluster with a fixed outer gap; in the hardest primary condition, AUROC was about 0.83 and support was close to one.
 
-This led to a key distinction:
+The next surprise came from non-normal systems. The main problem was not always that the estimated subspace became less accurate. Sometimes the spectral object I was trying to estimate stopped being well defined under the perturbation: a real/conjugation-closed cluster could break across the selected spectral boundary.
 
-> cross-scale inconsistency can predict spectral reliability without identifying the physical source of the inconsistency.
+From that point on, the project was no longer mainly about window selection. It became a study of **spectral admissibility** and finite-data reliability.
 
-### 6. Non-normality changed the type of failure
+I tested several simple risk summaries. Global eigenvector conditioning helped rank difficult cases but was not sufficient. Matched-conditioning counterexamples showed that moving the non-normal coupling relative to the selected boundary could change failure probability substantially. A fixed boundary-resolvent norm also had the right direction in carefully matched comparisons, but matched resolvent values could still correspond to very different risks.
 
-E10–E11 showed that increasing non-normality did not merely increase conditional subspace error. Instead, it could reduce the probability that the intended real/conjugation-closed spectral cluster existed at all.
+This suggested that the geometry near the selected boundary mattered more than one global scalar.
 
-The scientific target therefore shifted from conditional estimation error to **spectral admissibility**.
-
-### 7. Simple global sensitivity scalars were insufficient
-
-A conditioning-normalized perturbation score ranked some failure risks but failed universal calibration.
-
-Matched-conditioning counterexamples then showed that the location of non-normal coupling relative to the selected spectral boundary mattered.
-
-A frozen boundary-resolvent scalar was informative in nuisance-matched comparisons but was also insufficient as a standalone transportable risk variable.
-
-The emerging lesson was that **boundary-local geometry** matters.
-
-### 8. A projected boundary law survived fresh falsification
-
-For a selected \(2|3\) boundary, projected complexification reduces to the sign of
+For a controlled 2|3 boundary, the projected complexification event reduces to
 
 \[
 [g+\varepsilon(E_{22}-E_{33})]^2
-+4\varepsilon^2 E_{23}E_{32}.
++4\varepsilon^2E_{23}E_{32}<0.
 \]
 
-Under controlled Frobenius-isotropic perturbations, the corresponding finite-\(\varepsilon\) failure probability was reduced to a low-dimensional law.
+Under Frobenius-isotropic perturbations, the resulting probability can be reduced to a low-dimensional angular/radial calculation. In a fresh test over 252 cells, the theoretical probability agreed closely with simulation: MAE was about 0.00225, RMSE about 0.00325, and 98.8% of cells were inside exact 99% binomial intervals.
 
-Fresh validation over 252 cells gave approximately:
+The theory-to-data step was harder. A pilot OLS sampling law gave accurate failure-risk calibration when the true spectral center was supplied. Once the center itself had to be estimated from finite data, the point-risk estimate became unstable near the admissibility boundary. A local-to-boundary sequence showed a nonregular situation: the matrix estimate contracted with sample size, but the induced risk functional did not concentrate in the same way.
 
-- MAE: \(0.00225\);
-- RMSE: \(0.00325\);
-- maximum absolute error: \(0.0119\);
-- \(98.8\%\) of cells inside exact 99% binomial intervals.
+Replacing a single point-risk number with a center-uncertainty interval worked better. In the controlled local family, nominal 90% pooled coverage was about 0.936.
 
-This is one of the strongest controlled positive results in the repository.
+The last major question was whether causal observables could distinguish two sources of spectral motion: finite-sample estimation instability and smooth true drift. In a frozen matched-overlap benchmark with 4,000 new trajectories, the tested scale, temporal, operator-change, gap, and joint diagnostics all stayed near chance for this classification problem.
 
-### 9. Finite-data calibration exposed spectral-center nonregularity
-
-A one-sample OLS/linear-EDMD sampling law calibrated full spectral-failure probability accurately when the true spectral center was supplied.
-
-Once the center also had to be estimated from data, performance degraded strongly near the admissibility boundary.
-
-A local-to-boundary sequence showed that the matrix estimator itself could converge while a point-centered risk functional remained nonconcentrated.
-
-Replacing unstable point risk by a center-uncertainty interval produced nominal-90% pooled coverage about \(0.936\) in the controlled local matrix family.
-
-### 10. Source attribution remained non-identifiable
-
-In a frozen matched-overlap benchmark with 4,000 fresh trajectories, scale, temporal, operator-change, gap, and joint diagnostics remained near chance for distinguishing finite-sample instability from smooth true drift.
-
-At the same time, cross-scale instability still correlated with actual slow-subspace estimation error.
-
-The final conceptual separation is therefore:
+That negative result is important because it separates two questions that are easy to conflate:
 
 \[
-\text{reliability prediction} \neq \text{source attribution}.
+\text{How unreliable is the estimate?}
 \]
 
----
-
-## Main outcomes
-
-| Outcome | Evidence | Status |
-|---|---|---|
-| Bias–nonstationarity trade-off | \(A/n + C L_t^2n^2\), numerical \(L^{-2/3}\) scaling | supported for derived upper bound |
-| Raw eigenvector matching is fragile | mode-swap sanity test | supported |
-| Generic causal adaptive-window superiority | broad benchmarks | **not established** |
-| Nested spectral disagreement as true drift proxy | controlled nonstationary test | **refuted** |
-| Cross-scale signal as reliability predictor | E8 / E9b | supported in controlled regular-gap regimes |
-| Non-normality can destroy spectral-object identity | E10 / E11 | supported |
-| Global conditioning as universal risk variable | E12 / E14a | **insufficient** |
-| One fixed boundary-resolvent scalar | E15 | **insufficient standalone** |
-| Projected boundary-complexification probability | T5 / T6 | strongly supported in controlled perturbation family |
-| Data-level point risk near boundary | T12 local-to-boundary sequence | nonregular / unstable |
-| Center-uncertainty risk intervals | T12-A3 | supported in controlled local family |
-| Strong causal source decomposition | EXP-009 | **not identifiable in tested family** |
-
----
-
-## What the project does not claim
-
-The repository does not claim:
-
-- a new generic adaptive-window method;
-- a universal Koopman/EDMD uncertainty estimator;
-- universal identification of true drift versus estimation noise;
-- a universal non-normal spectral-risk law;
-- novelty of classical Grassmann, resolvent, pseudospectral, Riccati/Sylvester, or nonregular-inference machinery;
-- general nonlinear validity beyond the controlled systems that were actually tested;
-- source-level reproducibility for results explicitly marked provenance-limited or provenance-invalidated.
-
-These restrictions are part of the scientific result, not omitted caveats.
-
----
-
-## Reproducibility and research practice
-
-The project preserves positive, negative, inconclusive, design-limited, and provenance-limited results.
-
-The repository includes:
-
-- experiment and theory ledgers;
-- separate Branch-A and Branch-B scientific narratives;
-- reproducibility/provenance status for each major experiment;
-- migrated source for a subset of later experiments;
-- hashes or historical records when byte-faithful migration was not possible;
-- explicit corrections when an implementation or reporting issue changed interpretation.
-
-Large trajectory-level outputs and checkpoint archives are intentionally kept outside GitHub.
-
-See [reproducibility_status.md](reproducibility_status.md).
-
----
-
-## Skills demonstrated
-
-This project exercises a complete research workflow rather than a single modeling technique:
-
-- nonstationary time-series modeling;
-- Koopman/EDMD operator estimation;
-- spectral perturbation theory;
-- invariant-subspace and Grassmann geometry;
-- non-normal matrix analysis;
-- finite-sample statistical reasoning;
-- simulation design and falsification;
-- calibration and uncertainty quantification;
-- causal/online evaluation without future leakage;
-- negative-result interpretation;
-- reproducibility and provenance auditing;
-- literature-based novelty narrowing.
-
----
-
-## Recommended entry points
-
-1. [../README.md](../README.md) — repository overview and selected results.
-2. [research_story.md](research_story.md) — chronological falsification-driven development.
-3. [current_state.md](current_state.md) — detailed scientific state and claim ceiling.
-4. [novelty_positioning.md](novelty_positioning.md) — prior-art boundaries and defensible positioning.
-5. [reproducibility_status.md](reproducibility_status.md) — source/provenance map.
-6. [experiment_ledger.md](experiment_ledger.md) — experiment-by-experiment record.
-7. [../theory/README.md](../theory/README.md) — theory branch index.
-
----
-
-## Portfolio conclusion
-
-The project is complete as an exploratory research case study because it contains the full scientific loop:
+and
 
 \[
-\text{problem formulation}
-\rightarrow
-\text{mathematical model}
-\rightarrow
-\text{controlled experiment}
-\rightarrow
-\text{falsification}
-\rightarrow
-\text{reframing}
-\rightarrow
-\text{mechanistic theory}
-\rightarrow
-\text{finite-data limitations}.
+\text{Why did the estimate move?}
 \]
 
-The strongest result is not a single universally successful algorithm. The value of the project is the progressively sharper characterization of **when slow spectral information is reliable, when the spectral object itself ceases to be admissible, and what finite data can and cannot identify**.
+The first can be informative even when the second is not identifiable from the same data.
 
-Further experiments are scientifically possible, but they are optional continuation rather than necessary work for the portfolio version.
+## Results I would stand behind
+
+The initial bias–nonstationarity calculation and its numerical scaling checks are solid for the derived upper bound. Invariant-subspace comparisons are clearly preferable to mode-wise matching in the tested swap scenario. Cross-scale disagreement is useful as a reliability signal in controlled regular-gap families, but not as a general drift detector. Non-normality can create an object-existence problem rather than only a larger conditional error. The projected boundary-complexification law works very well in the controlled perturbation family. Near the spectral boundary, uncertainty in the estimated center matters enough that interval-valued risk is more stable than a naive plug-in point estimate.
+
+I would **not** present the work as a new general adaptive-window algorithm or as a universal Koopman uncertainty method.
+
+## Negative results that stayed in the project
+
+Several attractive ideas did not survive:
+
+- the first Lepski-style selector was too conservative;
+- no adaptive-history rule dominated robustly across the broad benchmark suite;
+- nested subspace disagreement was not a direct measure of true drift;
+- global conditioning was not a sufficient risk variable;
+- a single boundary-resolvent value was not sufficient either;
+- a second-order predictor failed when used globally outside a certified regime;
+- causal source attribution failed in the matched-overlap benchmark.
+
+Keeping these results made the final question much narrower, but also much clearer.
+
+## Reproducibility
+
+The repository distinguishes between results with migrated source, results whose source hash was verified externally, historical records, and provenance-limited results. I did not try to make the archive look cleaner by pretending that every old run was fully recoverable.
+
+The later workflow also became stricter: frozen designs, explicit seeds, manifests, hashes, checkpoint rules, and separate correctness/statistical/claim audits.
+
+See [reproducibility_status.md](reproducibility_status.md) for the experiment-by-experiment status.
+
+## Where to look
+
+Start with [research_story.md](research_story.md) for the chronological development of the project. [current_state.md](current_state.md) contains the detailed scientific position and limitations. [experiment_ledger.md](experiment_ledger.md) is the experiment record, and [../theory/README.md](../theory/README.md) indexes the theory branch.
+
+The project is complete enough for a portfolio in its present form. The next scientifically useful step would be a provenance-clean stationary correlated-trajectory replication, followed — only if that works — by another attempt at a reliability-aware adaptive history rule.
