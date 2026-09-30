@@ -43,7 +43,7 @@ The original automatic report did not adequately summarize:
 - variance decomposition;
 - why conditioning appeared mechanistically interesting.
 
-The repository README therefore contains a fuller scientific interpretation than the archived auto-generated report.
+The repository README therefore contains a fuller scientific interpretation than the archived report.
 
 ### 5. Finite-support checks should fail early
 
