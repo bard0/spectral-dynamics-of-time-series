@@ -1,5 +1,15 @@
 # Current Scientific State
 
+## Portfolio freeze status
+
+As of **2026-09-30**, the repository is considered complete as an **exploratory research portfolio case study** at the present claim ceiling.
+
+This does not mean the scientific program is exhausted. It means the current record already forms a coherent finished research narrative with mathematical derivation, positive and negative experiments, falsification-driven reframing, mechanism analysis, explicit claim limits, and reproducibility/provenance auditing.
+
+Future items in the roadmap are therefore treated as **optional research continuation**, not as missing requirements for portfolio completeness.
+
+See [portfolio_summary.md](portfolio_summary.md) for the concise external-facing narrative.
+
 ## Central question
 
 The active project is **causal spectral reliability and spectral admissibility for local Koopman/EDMD models of time series**.
