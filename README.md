@@ -2,6 +2,14 @@
 
 Research repository for **causal spectral reliability and spectral admissibility in time-series models**, with emphasis on local Koopman/EDMD operators, slow invariant subspaces, non-normality, finite-sample operator uncertainty, and the limits of causal source attribution.
 
+## Portfolio status
+
+**Portfolio release: September 2026 — completed exploratory research case study.**
+
+The repository is now packaged as a coherent record of a falsification-driven research program: mathematical formulation → controlled experiments → negative results → reframing → perturbation theory → finite-data reliability limits. It is intentionally **not** presented as a universally superior adaptive-window method or a finished general-purpose Koopman uncertainty estimator.
+
+For a concise project-level overview, see [docs/portfolio_summary.md](docs/portfolio_summary.md).
+
 ## Scientific question
 
 When a local data-driven spectrum changes, becomes unstable, or ceases to define the intended slow spectral object, what can be inferred from **past data only**?
@@ -127,6 +135,7 @@ README.md
 
 docs/
     current_state.md
+    portfolio_summary.md
     research_story.md
     experiment_ledger.md
     branch_A_spectral_admissibility.md
@@ -194,8 +203,19 @@ The labels are preserved instead of being silently renumbered.
 - State claims only at the level supported by the tested operator family and data-generating process.
 - Prefer a reliable negative result to a post-hoc rescued positive claim.
 
-## Current priority
+## Portfolio release status
 
-The next high-value Branch-A experiment is **`T12-B1R` — a reconstructed, re-frozen stationary correlated-trajectory Riesz risk-interval test that explicitly carries spectral-center uncertainty**. It must preserve executable source, configuration, exact event/support definitions, seed namespaces, manifests, hashes, and integrity tests before outcomes.
+The portfolio version of the project is considered **complete** at the current claim ceiling.
 
-Adaptive history selection remains downstream until the stationary trajectory/data-reliability layer is established.
+The strongest defensible outcome is not a generic adaptive-history algorithm. It is a documented research chain showing:
+
+- when cross-scale spectral information is useful as a reliability signal;
+- when non-normal geometry destroys the intended spectral object rather than merely increasing conditional error;
+- which low-dimensional boundary laws survive controlled falsification;
+- why spectral-center uncertainty creates a nonregular data-level problem near admissibility boundaries;
+- why calibrated risk intervals can be preferable to unstable point-risk estimates;
+- and why causal reliability prediction must be separated from source attribution.
+
+Further work is optional continuation rather than a requirement for portfolio completeness. The highest-value continuation remains a provenance-clean stationary correlated-trajectory replication (T12-B1R), followed only then by a nonstationary reliability envelope and possible reliability-aware adaptive-history application.
+
+See [docs/portfolio_summary.md](docs/portfolio_summary.md) for the concise portfolio narrative and [docs/roadmap.md](docs/roadmap.md) for the research continuation path.
